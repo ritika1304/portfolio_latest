@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ritika Yadav - Frontend Developer</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': '#007bff',
+                        'secondary': '#6c757d',
+                        // Changed accent to a vibrant purple (Violet 600)
+                        'accent': '#7c3aed', 
+                        'background-dark': '#1f2937', // Gray-800
+                        'card-dark': '#374151', // Gray-700
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Apply a smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Style for the fixed header */
+        .header-bg {
+            background-color: rgba(31, 41, 55, 0.95); /* Dark background with slight transparency */
+            backdrop-filter: blur(5px);
+        }
+        /* Custom card hover effect */
+        .project-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
+            border-color: #7c3aed; /* Purple hover border */
+        }
+
+        /* Custom CSS for Typing Effect Cursor */
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.1em; /* Adjust to match text height */
+            background-color: white; /* Cursor should be white */
+            margin-left: 2px;
+            animation: blink 0.75s step-end infinite;
+        }
+        @keyframes blink {
+            from, to { opacity: 0; }
+            50% { opacity: 1; }
+        }
+        
+        /* Scroll Reveal Animations (for cards and sections) */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans">
+
+    <!-- Header & Navigation -->
+    <header class="header-bg sticky top-0 z-50 shadow-lg">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <!-- Ensured text is visible with white color -->
+            <a href="#hero" class="text-2xl font-bold text-white hover:text-accent transition duration-300">Ritika Yadav</a>
+            <div class="hidden md:flex space-x-6 text-lg">
+                <a href="#about" class="hover:text-accent transition duration-300">About</a>
+                <a href="#skills" class="hover:text-accent transition duration-300">Skills</a>
+                <a href="#projects" class="hover:text-accent transition duration-300">Projects</a>
+                <a href="#contact" class="hover:text-accent transition duration-300">Contact</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg hover:bg-gray-700 transition duration-300" aria-label="Toggle navigation">
+                <i data-lucide="menu" class="w-6 h-6 text-white"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="md:hidden hidden bg-gray-800 transition-all duration-300 ease-in-out">
+            <div class="px-4 pt-2 pb-4 space-y-2 flex flex-col">
+                <a href="#about" class="block py-2 text-white hover:bg-gray-700 rounded-md px-3" onclick="document.getElementById('mobile-menu').classList.add('hidden')">About</a>
+                <a href="#skills" class="block py-2 text-white hover:bg-gray-700 rounded-md px-3" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Skills</a>
+                <a href="#projects" class="block py-2 text-white hover:bg-gray-700 rounded-md px-3" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Projects</a>
+                <a href="#contact" class="block py-2 text-white hover:bg-gray-700 rounded-md px-3" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex items-center justify-center text-center bg-background-dark py-20 px-4">
+            <div class="max-w-4xl mx-auto">
+                <p class="text-xl text-accent mb-3">Hello, I'm</p>
+                <!-- Added ID for typing effect -->
+                <h1 id="typing-text" class="text-6xl sm:text-7xl font-extrabold text-white mb-4">
+                </h1>
+                <h2 class="text-3xl sm:text-4xl font-light text-gray-300 mb-8">Frontend Developer</h2>
+                <p class="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                    2.5+ years of experience building scalable, high-performance web applications using Next.js, React.js, TypeScript, and Tailwind CSS. Expertise in performance optimization and Core Web Vitals.
+                </p>
+                <div class="flex justify-center space-x-4 scroll-reveal">
+                    <a href="#projects" class="px-8 py-3 text-lg font-semibold bg-accent text-white rounded-xl shadow-lg hover:bg-violet-800 transition duration-300 transform hover:scale-105">View Projects</a>
+                    <a href="#contact" class="px-8 py-3 text-lg font-semibold border-2 border-gray-600 text-gray-300 rounded-xl hover:bg-gray-700 transition duration-300 transform hover:scale-105">Get in Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 px-4 bg-gray-800 scroll-reveal">
+            <div class="container mx-auto max-w-4xl text-center">
+                <h2 class="text-4xl font-bold text-center text-accent mb-12 border-b-2 border-accent inline-block mx-auto pb-2">About Me</h2>
+                
+                <div class="text-lg space-y-6 text-gray-300">
+                    <!-- Paragraph 1 with staggered scroll-reveal -->
+                    <p class="scroll-reveal text-left">
+                        With 2.5 years dedicated to frontend development, my focus is on crafting robust, accessible, and ultra-fast user experiences. I thrive on solving complex problems, particularly around application performance (SSR/SSG, Core Web Vitals) and state management in large-scale applications.
+                    </p>
+                    
+                    <!-- Paragraph 2 with staggered scroll-reveal -->
+                    <p class="scroll-reveal text-left" style="transition-delay: 0.15s;">
+                        My professional journey has given me hands-on experience in high-stakes environments, specifically within the fintech and edtech sectors, where I have successfully led the development of real-time dashboards and critical platform features.
+                    </p>
+                    
+                    <!-- Paragraph 3 with staggered scroll-reveal -->
+                    <p class="scroll-reveal text-left" style="transition-delay: 0.3s;">
+                        I believe in clean code, automated testing, and continuous learning. Let's build something exceptional together!
+                    </p>
+                    
+                    <!-- Social Links -->
+                    <div class="flex justify-center space-x-6 pt-8 scroll-reveal" style="transition-delay: 0.45s;">
+                        <a href="https://github.com/ritika1304" target="_blank" class="text-gray-300 hover:text-accent transition duration-300 transform hover:scale-110" aria-label="GitHub Profile">
+                            <i data-lucide="github" class="w-8 h-8"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/ritikayadav04/" target="_blank" class="text-gray-300 hover:text-accent transition duration-300 transform hover:scale-110" aria-label="LinkedIn Profile">
+                            <i data-lucide="linkedin" class="w-8 h-8"></i>
+                        </a>
+                        <a href="mailto:ritikayadav.salon@gmail.com" class="text-gray-300 hover:text-accent transition duration-300 transform hover:scale-110" aria-label="Email">
+                            <i data-lucide="mail" class="w-8 h-8"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 px-4 bg-background-dark scroll-reveal">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-4xl font-bold text-center text-accent mb-12 border-b-2 border-accent inline-block mx-auto pb-2">Technical Skills</h2>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <!-- Skill Card 1: Next.js (Rocket Icon) -->
+                    <div class="p-6 bg-card-dark rounded-xl text-center shadow-xl border border-gray-700 hover:border-accent transition duration-300 scroll-reveal">
+                        <i data-lucide="rocket" class="w-10 h-10 text-accent mx-auto mb-3"></i>
+                        <h3 class="text-xl font-semibold mb-1">Next.js</h3>
+                        <p class="text-sm text-gray-400">SSR/SSG, Server Components</p>
+                    </div>
+                    <!-- Skill Card 2: React.js (Zap Icon) -->
+                    <div class="p-6 bg-card-dark rounded-xl text-center shadow-xl border border-gray-700 hover:border-accent transition duration-300 scroll-reveal" style="transition-delay: 0.1s;">
+                        <i data-lucide="zap" class="w-10 h-10 text-accent mx-auto mb-3"></i>
+                        <h3 class="text-xl font-semibold mb-1">React.js</h3>
+                        <p class="text-sm text-gray-400">Hooks, Performance Optimization</p>
+                    </div>
+                    <!-- Skill Card 3: TypeScript (File Type Icon) -->
+                    <div class="p-6 bg-card-dark rounded-xl text-center shadow-xl border border-gray-700 hover:border-accent transition duration-300 scroll-reveal" style="transition-delay: 0.2s;">
+                        <i data-lucide="file-type" class="w-10 h-10 text-accent mx-auto mb-3"></i>
+                        <h3 class="text-xl font-semibold mb-1">TypeScript</h3>
+                        <p class="text-sm text-gray-400">Strong Typing, Scalability</p>
+                    </div>
+                    <!-- Skill Card 4: Tailwind CSS (Feather Icon) -->
+                    <div class="p-6 bg-card-dark rounded-xl text-center shadow-xl border border-gray-700 hover:border-accent transition duration-300 scroll-reveal" style="transition-delay: 0.3s;">
+                        <i data-lucide="feather" class="w-10 h-10 text-accent mx-auto mb-3"></i>
+                        <h3 class="text-xl font-semibold mb-1">Tailwind CSS</h3>
+                        <p class="text-sm text-gray-400">Utility-First Styling</p>
+                    </div>
+
+                    <!-- Additional Skills -->
+                    <!-- Skill Card 5: MongoDB / SQL (Database Icon) -->
+                    <div class="p-6 bg-card-dark rounded-xl text-center shadow-xl border border-gray-700 hover:border-accent transition duration-300 scroll-reveal" style="transition-delay: 0.4s;">
+                        <i data-lucide="database" class="w-10 h-10 text-accent mx-auto mb-3"></i>
+                        <h3 class="text-xl font-semibold mb-1">MongoDB / SQL</h3>
+                        <p class="text-sm text-gray-400">Data Modeling, Query Optimization</p>
+                    </div>
+                    <!-- Skill Card 6: Git / GitHub (Git Branch Icon) -->
+                    <div class="p-6 bg-card-dark rounded-xl text-center shadow-xl border border-gray-700 hover:border-accent transition duration-300 scroll-reveal" style="transition-delay: 0.5s;">
+                        <i data-lucide="git-branch" class="w-10 h-10 text-accent mx-auto mb-3"></i>
+                        <h3 class="text-xl font-semibold mb-1">Git / GitHub</h3>
+                        <p class="text-sm text-gray-400">Version Control, CI/CD</p>
+                    </div>
+                    <!-- Skill Card 7: Redux Toolkit (Package Open Icon) -->
+                    <div class="p-6 bg-card-dark rounded-xl text-center shadow-xl border border-gray-700 hover:border-accent transition duration-300 scroll-reveal" style="transition-delay: 0.6s;">
+                        <i data-lucide="package-open" class="w-10 h-10 text-accent mx-auto mb-3"></i>
+                        <h3 class="text-xl font-semibold mb-1">Redux Toolkit</h3>
+                        <p class="text-sm text-gray-400">State Management</p>
+                    </div>
+                    <!-- Skill Card 8: Performance (Gauge Icon) -->
+                    <div class="p-6 bg-card-dark rounded-xl text-center shadow-xl border border-gray-700 hover:border-accent transition duration-300 scroll-reveal" style="transition-delay: 0.7s;">
+                        <i data-lucide="gauge" class="w-10 h-10 text-accent mx-auto mb-3"></i>
+                        <h3 class="text-xl font-semibold mb-1">Performance</h3>
+                        <p class="text-sm text-gray-400">Web Vitals, Lazy Loading</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 px-4 bg-gray-800 scroll-reveal">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-4xl font-bold text-center text-accent mb-12 border-b-2 border-accent inline-block mx-auto pb-2">Featured Projects</h2>
+
+                <div class="grid md:grid-cols-2 gap-10">
+
+                    <!-- Project 1: Edustoke Core Platform (Work Experience Highlight) -->
+                    <div class="project-card bg-card-dark rounded-2xl p-6 border-l-4 border-accent scroll-reveal">
+                        <h3 class="text-2xl font-bold text-white mb-3 flex items-center">
+                            <i data-lucide="graduation-cap" class="w-6 h-6 mr-2 text-accent"></i> Edustoke Platform Features
+                        </h3>
+                        <p class="text-gray-400 mb-4 text-lg">
+                            Developed core features for a large-scale edtech platform using Next.js.
+                        </p>
+                        <p class="text-gray-300 mb-4">
+                            Implemented Server-Side Rendering (SSR) and Static Site Generation (SSG) for key pages, significantly improving page load times and SEO rankings. Built complex responsive UI components and advanced filtering systems for data presentation.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-700 text-xs font-medium px-3 py-1 rounded-full">Next.js</span>
+                            <span class="bg-gray-700 text-xs font-medium px-3 py-1 rounded-full">SSR/SSG</span>
+                            <span class="bg-gray-700 text-xs font-medium px-3 py-1 rounded-full">Tailwind CSS</span>
+                            <span class="bg-gray-700 text-xs font-medium px-3 py-1 rounded-full">Redux Toolkit</span>
+                        </div>
+                        <a href="https://ritika1304.github.io/React-Portfolio/" target="_blank" class="text-accent font-semibold flex items-center hover:underline">
+                            View Live Demo
+                            <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                        </a>
+                    </div>
+
+                    <!-- Project 2: Asterisk Call Management System -->
+                    <div class="project-card bg-card-dark rounded-2xl p-6 border-l-4 border-accent scroll-reveal" style="transition-delay: 0.2s;">
+                        <h3 class="text-2xl font-bold text-white mb-3 flex items-center">
+                            <i data-lucide="phone-call" class="w-6 h-6 mr-2 text-accent"></i> Asterisk Call Management
+                        </h3>
+                        <p class="text-gray-400 mb-4 text-lg">
+                            Complete Call Management System with real-time analytics dashboards.
+                        </p>
+                        <p class="text-gray-300 mb-4">
+                            Designed and built a responsive React.js front-end for real-time call logging, tracking, and analytics. Focused on fault-tolerant modules and scalable design for high-performance data visualization.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-700 text-xs font-medium px-3 py-1 rounded-full">React.js</span>
+                            <span class="bg-gray-700 text-xs font-medium px-3 py-1 rounded-full">MySQL</span>
+                            <span class="bg-gray-700 text-xs font-medium px-3 py-1 rounded-full">Analytics</span>
+                            <span class="bg-gray-700 text-xs font-medium px-3 py-1 rounded-full">API Integration</span>
+                        </div>
+                        <a href="https://github.com/ritika1304/project-repo" target="_blank" class="text-accent font-semibold flex items-center hover:underline">
+                            View Source Code
+                            <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 px-4 bg-background-dark scroll-reveal">
+            <div class="container mx-auto max-w-3xl text-center">
+                <h2 class="text-4xl font-bold text-center text-accent mb-6 border-b-2 border-accent inline-block mx-auto pb-2">Get In Touch</h2>
+                <p class="text-xl text-gray-300 mb-10">
+                    I am currently open to new opportunities. Whether you have a question or just want to say hi, my inbox is always open!
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-8 scroll-reveal" style="transition-delay: 0.2s;">
+                    <div class="p-4 bg-card-dark rounded-xl shadow-lg border border-gray-700 flex items-center justify-center space-x-3 transition duration-300 hover:scale-105">
+                        <i data-lucide="mail" class="w-6 h-6 text-accent"></i>
+                        <a href="mailto:ritikayadav.salon@gmail.com" class="text-lg text-white">ritikayadav.salon@gmail.com</a>
+                    </div>
+                    <div class="p-4 bg-card-dark rounded-xl shadow-lg border border-gray-700 flex items-center justify-center space-x-3 transition duration-300 hover:scale-105">
+                        <i data-lucide="phone" class="w-6 h-6 text-accent"></i>
+                        <span class="text-lg text-white">+91 6280338944</span>
+                    </div>
+                </div>
+
+                <div class="mt-10 scroll-reveal" style="transition-delay: 0.4s;">
+                    <a href="https://www.linkedin.com/in/ritikayadav04/" target="_blank" class="inline-flex items-center px-6 py-3 border-2 border-accent text-accent font-semibold rounded-xl hover:bg-accent hover:text-white transition duration-300">
+                        <i data-lucide="linkedin" class="w-5 h-5 mr-2"></i> Connect on LinkedIn
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-700 py-6">
+        <div class="container mx-auto px-4 text-center text-gray-400">
+            <p>&copy; <span id="current-year"></span> Ritika Yadav. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Dynamically set the current year in the footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle Logic
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Hide mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Typing Animation Logic (Kept as requested)
+        function typeWriter(elementId, text, speed) {
+            const element = document.getElementById(elementId);
+            let i = 0;
+            
+            element.innerHTML = '<span class="cursor"></span>'; 
+            const cursor = element.querySelector('.cursor');
+
+            function type() {
+                if (i < text.length) {
+                    cursor.insertAdjacentHTML('beforebegin', text.charAt(i));
+                    i++;
+                    setTimeout(type, speed); 
+                } else {
+                    cursor.remove();
+                }
+            }
+            type();
+        }
+
+        // Scroll Reveal Logic
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Only unobserve if the animation is a one-time entrance effect
+                    if (entry.target.parentElement.id !== 'about') {
+                         observer.unobserve(entry.target);
+                    }
+                }
+            });
+        }, {
+            // Options
+            threshold: 0.1, // Trigger when 10% of the element is visible
+            rootMargin: '0px 0px -50px 0px' // Start slightly before the bottom of the viewport
+        });
+
+        document.querySelectorAll('.scroll-reveal').forEach(element => {
+            observer.observe(element);
+        });
+
+
+        // Call typing animation on window load
+        window.onload = function() {
+            typeWriter('typing-text', 'Ritika Yadav', 50);
+        };
+        
+    </script>
+</body>
+</html>
